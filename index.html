@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Afterlight</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <style>
+        /* Libre Caslon Condensed Variable Font */
+        @font-face {
+            font-family: 'LibreCaslonCondensed';
+            src: url('fonts/LibreCaslonCondensed[wght].woff2') format('woff2');
+            font-weight: 400 700; /* Regular (400) to Bold (700) */
+            font-style: normal;
+        }
+
+        /* Apply Libre Caslon Condensed Globally */
+        body {
+            font-family: 'LibreCaslonCondensed', sans-serif;
+        }
+
+        /* Apply Radio Canada to specific text areas */
+        .radio-canada {
+            font-family: 'Radio Canada', sans-serif;
+        }
+
+        .control-pill {
+            background-color: rgba(0, 0, 0, 0.2); /* 20% black opacity */
+            backdrop-filter: blur(10px); /* Background blur */
+            border-radius: 9999px; /* Pill shape */
+            padding: 0.5rem 1rem; /* Padding for control buttons */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Radio Canada', sans-serif; /* Use Radio Canada for controls */
+        }
+
+        /* Make Carousel Section Rounded */
+        .carousel-section {
+            border-radius: 1rem; /* Round corners */
+            overflow: hidden; /* Ensure images stay within rounded corners */
+        }
+
+        /* Arrow button styles */
+        .arrow-button {
+            height: 40px;
+            width: 40px;
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 9999px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .arrow-button:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="navbar flex justify-between items-center px-12 py-4 bg-white border-b border-gray-200">
+        <!-- Brand/Logo -->
+        <div class="text-2xl radio-canada font-bold tracking-tight">
+          <img src="Logos.svg" alt="Tessera Logo" class="h-14 w-auto">
+        </div>
+        <!-- Navigation Links -->
+        <div class="space-x-8 text-gray-400 text-xl radio-canada tracking-tight">
+            <a href="#" class="hover:text-black">Work</a>
+            <a href="#" class="hover:text-black">About</a>
+            <a href="#" class="hover:text-black">Contact</a>
+        </div>
+    </nav>
+
+     <!-- Headline Section -->
+     <section class="mt-20 text-left px-12 tracking-tighter">
+        <h1 class="text-7xl">
+            Piecing together intuitive<br>design for great experiences
+        </h1>
+    </section>
+
+    <div class="relative w-full max-w-8xl px-12 sm:mt-12 mt-8">
+        <!-- Carousel Wrapper -->
+        <div class="overflow-hidden rounded-3xl">
+          <div id="carousel" class="flex transition-transform duration-500">
+            <!-- Slide 1 -->
+            <div class="w-full flex-shrink-0 bg-blue-500 text-white h-64 flex items-center justify-center h-full">
+              <img src="Frame.jpg">
+            </div>
+            <!-- Slide 2 -->
+            <div class="w-full flex-shrink-0 bg-blue-500 text-white h-64 flex items-center justify-center h-full">
+              <img src="Frame.jpg">
+            </div>
+            <!-- Slide 3 -->
+            <div class="w-full flex-shrink-0 bg-blue-500 text-white h-64 flex items-center justify-center h-full">
+              <img src="Frame.jpg">
+            </div>
+          </div>
+        </div>
+    
+        <!-- Navigation Buttons -->
+        <div class="absolute bottom-6 right-6 flex space-x-2 px-12">
+            <button onclick="prevSlide()" class="bg-white bg-opacity-20 text-white px-3 py-2 rounded-full hover:bg-opacity-15">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                  </svg>
+                                                    
+              </button>
+              <button onclick="prevSlide()" class="bg-white bg-opacity-20 text-white px-3 py-2 rounded-full hover:bg-opacity-15">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>                                   
+              </button>
+        </div>
+      </div>
+    
+      <script>
+        let currentIndex = 0;
+        const slides = document.getElementById('carousel').children;
+        const totalSlides = slides.length;
+    
+        function updateCarousel() {
+          document.getElementById('carousel').style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          updateCarousel();
+        }
+    
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+          updateCarousel();
+        }
+      </script>
+
+    <br>  
+    <br>  
+
+    <div class="max-w-8xl px-12">
+        <p class="text-2xl radio-canada text-gray-400 tracking-tight">Our Work</p> 
+        <hr>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-4 sm:mt-8 max-w-8xl mx-auto px-12 sm:px-12">
+        <a href="g2.html">
+          <div class="relative">
+            <div class="rounded-3xl overflow-hidden">
+            <img src="lol.jpg" class="rounded-3xl hover:scale-110 transition ease-in-out">
+            </div>
+            <h1 class="text-xl md:text-3xl tracking-tight mt-4">City of Dallas</h1>
+            <p class="text-md font-regular radio-canada sm:text-lg mt-2 text-gray-500 opacity-85 tracking-tight">Generating user acquisition for the world's first whitelabel sportsbook</p>
+          </div>
+        </a>
+        <a href="g2.html">
+          <div class="relative">
+            <div class="rounded-3xl overflow-hidden">
+            <img src="lol.jpg" class="rounded-3xl hover:scale-110 transition ease-in-out">
+            </div>
+            <h1 class="text-xl md:text-3xl tracking-tight mt-4">The UX Club</h1>
+            <p class="text-md font-regular radio-canada sm:text-lg mt-2 text-gray-500 opacity-85 tracking-tight">Generating user acquisition for the world's first whitelabel sportsbook</p>
+          </div>
+        </a>
+    </div>
+</body>
+</html>
